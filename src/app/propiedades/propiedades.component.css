@@ -1,0 +1,16 @@
+.form-izquierda{
+  float: left;
+  background-color: white;
+  margin-top: 50px;
+
+}
+
+.form-derecha{
+  float: right;
+  background-color: white;
+  margin-top: 50px;
+
+}
+#requerido{
+  display: none;
+}

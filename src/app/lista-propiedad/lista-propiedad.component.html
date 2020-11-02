@@ -1,0 +1,56 @@
+<h1 style="font-size: 33px;color: black; text-align: center;">Propiedades</h1>
+
+<a class="btn-round btn-success" id="btn-add" style="color: black; font-size: 20px;margin-top: 0%; " routerLink="registro"><button style="background-color:#F1F1FF;" mat-icon-button ><mat-icon>add</mat-icon></button>&nbsp; CREAR PROPIEDAD</a>
+<div  style="column-count: 2;column-width: 300px;column-gap: 0em;">
+  <ul *ngFor="let propiedad of propiedades | paginate: { itemsPerPage:4, currentPage: pageActual }" style="list-style: none;" >
+
+    <li style="-webkit-column-break-inside: avoid;page-break-inside: avoid;break-inside: avoid;">
+    <mat-card class="example-card mat-elevation-z8">
+      <mat-card-header>
+        <mat-card-title style="color: black;">{{propiedad.pro_titulo}}</mat-card-title>
+
+      </mat-card-header>
+
+      <div *ngIf="propiedad.fotos" >
+<mat-carousel
+  timings="250ms ease-in"
+  [autoplay]="true"
+  interval="5000"
+  color="red"
+  maxWidth="auto"
+  proportion="25"
+  slides="5"
+  [loop]="true"
+  [hideArrows]="false"
+  [hideIndicators]="false"
+  [useKeyboard]="true"
+  [useMouseWheel]="false"
+  orientation="ltr"
+  proportion="60"
+>
+<mat-carousel-slide
+  #matCarouselSlide
+  *ngFor="let slide of propiedad.fotos; let i = index"
+  [image]="slide.gal_imagen"
+  overlayColor="#00000040"
+  [hideOverlay]="false"
+></mat-carousel-slide>
+</mat-carousel>
+
+      </div>
+      <mat-card-content style="color: black;">
+        <mat-card-subtitle  style="color: goldenrod;font-size: 20px;"><strong>{{propiedad.pro_precio}}</strong></mat-card-subtitle>
+        <p style="size:5px;">
+          {{propiedad.pro_descripcion}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button class="btn-success" routerLink="detalle/{{propiedad.pro_id}}" mat-button>VER MAS</button>
+        <button class="btn-danger" mat-button>ELIMINAR</button>
+      </mat-card-actions>
+    </mat-card>
+  </li>
+</ul>
+</div>
+<pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+

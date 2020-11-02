@@ -1,0 +1,59 @@
+.form-izquierda{
+  float: left;
+  background-color: white;
+
+}
+
+.form-derecha{
+  float: right;
+  background-color: white;
+
+}
+#requerido{
+  display: none;
+}
+
+#form-add{
+  display:none;
+  background-color: white;
+}
+
+#selectimagen{
+  height:80px;
+  opacity: 0.3;
+}
+#selectimagen:hover{
+  height:100px;
+  opacity: 1;
+}
+
+
+#btn-prev, #btn-next{
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.5);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 40px;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50%;
+  font-family: monospace;
+  cursor: pointer;
+}
+
+#btn-prev:hover, #btn-next:hover{
+  background: rgba(255,255,255,1);
+
+}
+#btn-prev{
+  left: 10px;
+}
+#btn-next{
+  right: 10px;
+}
+
+
+

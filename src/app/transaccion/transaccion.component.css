@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+  background-color:white;
+  padding: 5%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+
+}
+.header-table {
+  background-color: gold;
+}
+
+#form-add{
+  display:none;
+  background-color: white;
+}
+#btn-add{
+  display:block;
+}
+
+#btn-agregar{
+  pointer-events:all;
+}
+#requerido{
+  display: none;
+}

@@ -1,0 +1,387 @@
+
+
+<h1>DETALLE DE LA PROPIEDAD</h1>
+<h2 style="text-align: center; color: #000;"><strong>Titulo:{{propiedad.pro_titulo}}</strong></h2>
+
+  <div *ngIf="propiedad.fotos" class="col-sm-9 border border-gray mb-2  form-izquierda mat-elevation-z8" style="text-align: center;background-color: #DAF2FF;"  >
+    <div class=" border-gray border mb-2" style="position: relative;">
+       <img id="imagen" style="max-width:100%;" src="{{propiedad.fotos[indexfoto].gal_imagen}}"/>
+      <button  id="btn-next"  (click)="avanzaFotos(1)" >&#62;</button>
+      <button  id="btn-prev"  (click)="avanzaFotos(-1)" >&#60;</button>
+    </div>
+   <div class=" border-gray border mb-2" style="width: 100%;height:80px;">
+    <mat-grid-list cols="10" rowHeight="10:1" >
+      <mat-grid-tile *ngFor="let item of propiedad.fotos" style="height:80px;">
+
+
+        <button  (click)="selectImagen(item)" ><img id="selectimagen"   *ngIf="item" [src]="item.gal_imagen" src=""/></button>
+
+
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    </div>
+
+    <p><button _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="modal.open(contgaleria)" >Editar</button>
+
+    </p>
+
+
+
+
+    <ng-template #contgaleria let-modal>
+      <div class="modal-header">
+       <h2 class="modal-title">Detalles</h2>
+         <button class="close btn-danger" aria-label="close" type="button" (click)="cerrarModal()">
+           <span  aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class=" border-gray border mb-2" style="width: 100%;background-color:#fff;">
+            <h2>Galeria de Fotos</h2>
+            <p  style="color: red;font-size:15px; ">Campo requerido</p>
+            <p id="requeridoGaleria" style="color: red;font-size:15px;display:none; ">Ingrese almenos una imagen para complentar el formulario</p>
+            <input  style="display: block;" class="form-control" id="fileimagen"  type="file" (change)="fileSelected($event)">
+
+           </div>
+           <div class=" border-gray border mb-2" style="width: 100%;height:155px;">
+
+            <mat-grid-list cols="2" rowHeight="2:1" >
+              <mat-grid-tile *ngFor="let item of fotos" style="height:150px;">
+                  <button style="position: absolute;"  (click)="eliminarimagen(item)" mat-icon-button >
+                  <mat-icon color="primary">delete</mat-icon>
+                  </button>
+                  <img style="height:150px;float: left;"  *ngIf="item" [src]="item.gal_imagen" src=""/>
+
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+        </div>
+
+
+    </ng-template>
+
+
+  </div>
+
+<div class="col-sm-3 border border-gray mb-2  form-derecha mat-elevation-z8">
+
+  <P >
+    precio:{{propiedad.pro_precio}}
+  </P>
+  <P>
+    Alicuota:{{propiedad.pro_alicuota}}
+  </P>
+
+  <p >
+    Descripción : {{propiedad.pro_descripcion}}
+  </p>
+
+  <p><button _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="modal.open(contpublicacion)" >Editar</button>
+
+  </p>
+
+
+  <ng-template #contpublicacion let-modal>
+    <div class="modal-header">
+     <h2 class="modal-title">Datos de la publicación</h2>
+       <button class="close btn-danger" aria-label="close" type="button" (click)="cerrarModal()">
+         <span  aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p  style="color: red;font-size:15px; ">Campos requeridos (*)</p>
+        <p id="requerido" style="color: red;font-size:15px; ">Ingres todos los campos requeridos del formulario</p>
+       <mat-label>
+        Titulo<label style="color: red;">*</label>:
+        </mat-label><input _ngcontent-c4 class="form-control"  type="text" [(ngModel)]="propiedad2.pro_titulo"/>
+
+
+          <mat-label>
+          Descripción<label style="color: red;">*</label>:
+          </mat-label>
+          <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="propiedad2.pro_descripcion"/>
+
+
+          <mat-label>
+          Precio:
+        </mat-label><input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="propiedad2.pro_precio"/>
+
+        <mat-label>
+          Alicuota:
+        </mat-label>
+        <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="propiedad2.pro_alicuota"/>
+
+
+        <mat-label>
+        Categoria:
+        <label style="color: red;">*</label>:{{seleccionado1.cat_nombre}}
+        </mat-label>
+        <select name="miselect" [(ngModel)]="seleccionado1" _ngcontent-c4 class="form-control">
+          <option [ngValue]="objeto" *ngFor="let objeto of categorias">{{objeto.cat_nombre}}</option>
+          </select>
+
+          <mat-label>
+          Transaccion:<label style="color: red;">*</label>:{{seleccionado2.tra_nombre}}
+        </mat-label>
+         <select name="miselect" [(ngModel)]="seleccionado2" _ngcontent-c4 class="form-control"   >
+            <option  [ngValue]="objeto" *ngFor="let objeto of transacciones" >{{objeto.tra_nombre}}</option>
+            </select>
+
+
+              <button   _ngcontent-c4 class="btn btn-info btn-round" id="btn-editar" (click)="editarPublicacion()">Editar</button>
+
+
+      </div>
+
+
+  </ng-template>
+
+
+</div>
+
+
+<div  class="col-sm-9 border border-gray mb-2 form-izquierda mat-elevation-z8">
+  <h2 style="text-align: center;">UBICACION</h2>
+  <ul *ngIf="propiedad.ubicacion">
+     <li>
+      Dirección: {{propiedad.ubicacion.ubi_direccion}}
+     </li>
+     <li>
+      Ciudad: {{propiedad.ubicacion.ubi_ciudad}}
+     </li>
+     <li>
+      Barrio: {{propiedad.ubicacion.ubi_barrio}}
+     </li>
+     <li>
+      Cod. Postal: {{propiedad.ubicacion.ubi_codpostal}}
+     </li>
+
+   </ul>
+
+   <p><button *ngIf="propiedad.ubicacion" _ngcontent-c4 class="btn btn-success btn-round"   (click)="modal.open(contubicacion)" >Editar</button>
+    <button *ngIf="propiedad.ubicacion" _ngcontent-c4 class="btn btn-danger btn-round"  (click)="eliminarUbicacion(ubicacion.ubi_id)">Eliminar</button>
+    <button *ngIf="!propiedad.ubicacion" _ngcontent-c4 class="btn btn-info btn-round"  (click)="modal.open(contubicacion)" >Agregar</button>
+
+
+  </p>
+
+
+   <ng-template #contubicacion let-modal>
+     <div class="modal-header">
+      <h2 class="modal-title">Datos de ubicacion</h2>
+        <button class="close btn-danger" aria-label="close" type="button" (click)="cerrarModal()">
+          <span  aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+
+
+
+           <mat-label>
+            Direccion:
+            </mat-label><input _ngcontent-c4 class="form-control"  type="text" [(ngModel)]="ubicacion.ubi_direccion"/>
+
+            <mat-label>ciudad:</mat-label>
+            <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="ubicacion.ubi_ciudad"/>
+
+           <mat-label>
+            Codigo Postal:<input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="ubicacion.ubi_codpostal"/>
+           </mat-label>
+           <mat-label>
+            Barrio:  </mat-label>
+            <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="ubicacion.ubi_barrio"/>
+          </div>
+
+          <p>
+            <button *ngIf="!propiedad.ubicacion" _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="agregarUbicacion()" >AGREGAR</button>
+            &nbsp;
+            <button  *ngIf="propiedad.ubicacion" _ngcontent-c4 class="btn btn-info btn-round" id="btn-editar" (click)="editarUbicacion()" >Editar</button>
+            </p>
+   </ng-template>
+</div>
+
+
+
+
+<div   class="col-sm-9 border border-gray mb-2 form-izquierda mat-elevation-z8">
+  <h2 style="text-align: center;">CARACTERISTRICAS</h2>
+  <ul *ngIf="propiedad.caracteristica" style="column-count: 2;column-width:150px;">
+   <li><P>
+     Metros de construcción:{{propiedad.caracteristica.m_contruccion}}  m<sup>2</sup>
+   </P></li>
+   <li><P>
+     Metros de terreno:{{propiedad.caracteristica.m_terreno}} m<sup>2</sup>
+   </P></li>
+   <li><P>
+     Año de construccion:{{propiedad.caracteristica.anio_construccion}}
+   </P></li>
+   <li><P>
+     Habitación:{{propiedad.caracteristica.habitacion}}
+   </P></li>
+   <li><P>
+     Baño compartido:{{propiedad.caracteristica.bano_compartido}}
+   </P>
+ </li>
+ <li>
+   <p>
+     Baño master : {{propiedad.caracteristica.bano_master}}
+   </p>
+ </li>
+
+ <li>
+   <p>
+     Baño social: {{propiedad.caracteristica.bano_social}}
+   </p>
+ </li>
+ <li>
+   <p>
+     Linea Telefonica: {{propiedad.caracteristica.linea_telf}}
+   </p>
+ </li>
+ <li>
+   <p>
+     Plantas: {{propiedad.caracteristica.plantas}}
+   </p>
+ </li>
+ </ul>
+
+ <p><button *ngIf="propiedad.caracteristica" _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="modal.open(contcaracteristicas)" >Editar</button>
+  <button *ngIf="propiedad.caracteristica" _ngcontent-c4 class="btn btn-danger btn-round"  (click)="eliminarCaracteristica(caracteristica.car_id)">Eliminar</button>
+  <button *ngIf="!propiedad.caracteristica" _ngcontent-c4 class="btn btn-info btn-round" id="btn-agregar"  (click)="modal.open(contcaracteristicas)" >Agregar</button>
+
+ </p>
+ <ng-template #contcaracteristicas let-modal>
+  <div class="modal-header">
+   <h2 class="modal-title">Caracteristicas Principales</h2>
+     <button class="close btn-danger" aria-label="close" type="button" (click)="cerrarModal()">
+       <span  aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <mat-label>
+       Habitaciones:
+       </mat-label><input _ngcontent-c4 class="form-control"  type="number" value=0 [(ngModel)]="caracteristica.habitacion"/>
+       <p>
+         Metros de Terreno:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.m_terreno"/>
+       </p>
+       <p>
+         Metros de Construcción:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.m_contruccion"/>
+       </p>
+       <p>
+         Año de construcción:<input  _ngcontent-c4 class="form-control" type="month" [(ngModel)]="caracteristica.anio_construccion"/>
+       </p>
+      <p>
+       Baño Compartido:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.bano_compartido"/>
+     </p>
+     <p>
+       Baño Master:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.bano_master"/>
+     </p>
+     <p>
+       Baño Social:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.bano_social"/>
+     </p>
+     <p>
+       Lineas Telefonicas:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.linea_telf"/>
+     </p>
+     <p>
+       Plantas:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.plantas"/>
+     </p>
+     <p>
+      <button *ngIf="!propiedad.caracteristica" _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="agregarCaracteristica()" >AGREGAR</button>
+      &nbsp;
+      <button  *ngIf="propiedad.caracteristica" _ngcontent-c4 class="btn btn-info btn-round" id="btn-editar" (click)="editarCaracteristica()" >Editar</button>
+      </p>
+    </div>
+
+</ng-template>
+
+ </div>
+
+
+ <div *ngIf="propiedad.transaccion" class="col-sm-9 border border-gray mb-2 form-izquierda mat-elevation-z8">
+  <h2 style="text-align: center;">TRANSACCIÓN</h2>
+  <ul>
+     <li>
+       {{propiedad.transaccion.tra_nombre}}
+     </li>
+   </ul>
+</div>
+
+<div *ngIf="propiedad.categoria" class="col-sm-9 border border-gray mb-2 form-izquierda mat-elevation-z8">
+  <h2 style="text-align: center;">CATEGORIA</h2>
+  <ul>
+     <li>
+       {{propiedad.categoria.cat_nombre}}
+     </li>
+   </ul>
+</div>
+
+
+<div class="col-sm-9 border border-gray mb-2 form-izquierda mat-elevation-z8">
+  <h2 style="text-align: center;">DETALLES</h2>
+  <div  *ngIf="adicionales">
+  <ul  *ngFor="let item of adicionales">
+     <li>
+      {{item.add_nombre}}: {{item.add_descripcion}}
+     </li>
+   </ul>
+  </div>
+
+   <p><button _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="modal.open(contadicional)" >Editar</button>
+
+   </p>
+
+
+   <ng-template #contadicional let-modal>
+     <div class="modal-header">
+      <h2 class="modal-title">Detalles</h2>
+        <button class="close btn-danger" aria-label="close" type="button" (click)="cerrarModal()">
+          <span  aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+        <p  style="color: red;font-size:15px; ">Campos requeridos (*)</p>
+        <p id="requeridoadd" style="color: red;font-size:15px; display:none;">Ingres todos los campos requeridos del formulario</p>
+        <mat-label>
+         Nombre<label style="color: red;">*</label>:
+         </mat-label><input _ngcontent-c4 class="form-control"  type="text" [(ngModel)]="adicional.add_nombre"/>
+
+        <mat-label>
+         Valor<label style="color: red;">*</label>:
+        </mat-label><input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="adicional.add_descripcion"/>
+
+       <p><button _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="agregaradicional()" >AGREGAR</button>
+
+
+        </p>
+
+        <table *ngFor="let item of adicionales">
+          <tr>
+          <th>{{item.add_nombre}}:</th>
+          <th>{{item.add_descripcion}}</th>
+          <th> <button (click)="eliminaradicional(item)" mat-icon-button >
+            <mat-icon color="primary">delete</mat-icon>
+            </button></th>
+        </tr>
+        </table>
+
+
+       </div>
+
+
+   </ng-template>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

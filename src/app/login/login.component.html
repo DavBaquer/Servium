@@ -1,0 +1,40 @@
+
+
+
+    <div class="container">
+      <div class="panels-container">
+        <div class="panel left-panel">
+            <div class="forms-container">
+                <form  [formGroup]="loginForm" (ngSubmit)="onLogin()" class="sign-in-form">
+                  <h2 class="title">LOGIN</h2>
+                  <mat-form-field class="input-field" >
+                    <mat-icon style="width: 100%;"> email <input   type="text" placeholder="Username" matInput formControlName="username" required  /></mat-icon>
+
+                    <mat-error *ngIf="isValidFiel('username')">
+                      {{getErrorMessage('username')}}
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="input-field">
+
+
+                    <mat-icon style="width: 100%;" >lock  <input type="password" placeholder="Password" matInput required formControlName="password"/></mat-icon>
+
+                    <mat-error *ngIf="isValidFiel('password')" style="width: 100%;">
+                      {{getErrorMessage('password')}}
+                    </mat-error>
+                  </mat-form-field>
+                  <input type="submit" value="Login" class="btn solid" />
+
+                </form>
+
+
+            </div>
+            <img src="../../assets/img/log.svg" class="image" alt="" />
+          </div>
+
+        </div>
+        </div>
+
+
+

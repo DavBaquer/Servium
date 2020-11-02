@@ -24,7 +24,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "src/assets/sass/paper-kit.scss",
+              "src/assets/css/demo.css",
+              "src/assets/css/nucleo-icons.css"
             ],
             "scripts": []
           },
@@ -88,7 +93,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/styles.css",
+              "src/assets/sass/paper-kit.scss",
+              "src/assets/css/demo.css",
+              "src/assets/css/nucleo-icons.css"
             ],
             "scripts": []
           }
@@ -119,6 +128,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "BienesRaices"
+    }
+  },
+  "defaultProject": "BienesRaices",
+  "cli": {
+    "analytics": "a1ac1948-eeac-4d91-b9c2-27741f9724a2"
+  }
 }

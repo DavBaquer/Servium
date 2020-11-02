@@ -1,0 +1,164 @@
+<h1 style="font-size: 33px;color: black; text-align: center;">Crea una Propiedad</h1>
+
+<div class="col-sm-6 border border-black mb-2 form-izquierda" >
+
+  <h2>Datos de publicacion</h2>
+  <p  style="color: red;font-size:15px; ">Campos requeridos (*)</p>
+  <p id="requerido" style="color: red;font-size:15px; ">Ingres todos los campos requeridos del formulario</p>
+ <mat-label>
+  Titulo<label style="color: red;">*</label>:
+  </mat-label><input _ngcontent-c4 class="form-control"  type="text" [(ngModel)]="propiedad.pro_titulo"/>
+
+
+    <mat-label>
+    Descripción<label style="color: red;">*</label>:
+    </mat-label>
+    <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="propiedad.pro_descripcion"/>
+
+
+    <mat-label>
+    Precio:
+  </mat-label><input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="propiedad.pro_precio"/>
+
+  <mat-label>
+    Alicuota:
+  </mat-label>
+  <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="propiedad.pro_alicuota"/>
+
+
+  <mat-label>
+  Categoria:
+  <label style="color: red;">*</label>:
+  </mat-label>
+  <select name="miselect" [(ngModel)]="seleccionado1" _ngcontent-c4 class="form-control">
+    <option [ngValue]="objeto" *ngFor="let objeto of categorias">{{objeto.cat_nombre}}</option>
+    </select>
+
+    <mat-label>
+    Transaccion:<label style="color: red;">*</label>:
+  </mat-label>
+   <select name="miselect" [(ngModel)]="seleccionado2" _ngcontent-c4 class="form-control">
+      <option [ngValue]="objeto" *ngFor="let objeto of transacciones">{{objeto.tra_nombre}}</option>
+      </select>
+
+</div>
+
+
+<div class="col-sm-5 border border-gray mb-2 form-derecha" >
+  <h2>Datos de ubicacion</h2>
+
+  <mat-label>
+   Direccion:
+   </mat-label><input _ngcontent-c4 class="form-control"  type="text" [(ngModel)]="ubicacion.ubi_direccion"/>
+
+   <mat-label>ciudad:</mat-label>
+   <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="ubicacion.ubi_ciudad"/>
+
+  <mat-label>
+   Codigo Postal:<input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="ubicacion.ubi_codpostal"/>
+  </mat-label>
+  <mat-label>
+   Barrio:  </mat-label>
+   <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="ubicacion.ubi_barrio"/>
+ </div>
+
+<div style="clear: both;"></div>
+
+<div class="col-sm-6 border border-black mb-2 form-izquierda" >
+
+  <h2>Caracteristicas Principales</h2>
+ <mat-label>
+  Habitaciones:
+  </mat-label><input _ngcontent-c4 class="form-control"  type="number" value=0 [(ngModel)]="caracteristica.habitacion"/>
+
+  <p>
+    Metros de Terreno:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.m_terreno"/>
+  </p>
+  <p>
+    Metros de Construcción:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.m_contruccion"/>
+  </p>
+  <p>
+    Año de construcción:<input  _ngcontent-c4 class="form-control" type="month" [(ngModel)]="caracteristica.anio_construccion"/>
+  </p>
+ <p>
+  Baño Compartido:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.bano_compartido"/>
+</p>
+<p>
+  Baño Master:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.bano_master"/>
+</p>
+<p>
+  Baño Social:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.bano_social"/>
+</p>
+<p>
+  Lineas Telefonicas:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.linea_telf"/>
+</p>
+<p>
+  Plantas:<input  _ngcontent-c4 class="form-control" type="number" [(ngModel)]="caracteristica.plantas"/>
+</p>
+
+</div>
+
+
+<div class="col-sm-5 border border-gray mb-2 form-derecha" >
+  <h2>Agregar caracteristica adicional</h2>
+  <p  style="color: red;font-size:15px; ">Campos requeridos (*)</p>
+  <p id="requeridoadd" style="color: red;font-size:15px; display:none;">Ingres todos los campos requeridos del formulario</p>
+  <mat-label>
+   Nombre<label style="color: red;">*</label>:
+   </mat-label><input _ngcontent-c4 class="form-control"  type="text" [(ngModel)]="adicional.add_nombre"/>
+
+  <mat-label>
+   Valor<label style="color: red;">*</label>:
+  </mat-label><input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="adicional.add_descripcion"/>
+
+ <p><button _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="agregaradicional()" >AGREGAR</button>
+
+
+  </p>
+
+  <table *ngFor="let item of adicionales">
+    <tr>
+    <th>{{item.add_nombre}}:</th>
+    <th>{{item.add_descripcion}}</th>
+    <th> <button (click)="eliminaradicional(item)" mat-icon-button >
+      <mat-icon color="primary">delete</mat-icon>
+      </button></th>
+  </tr>
+  </table>
+ </div>
+
+
+<div style="clear: both;"></div>
+
+
+<div class=" border-gray border mb-2" style="width: 100%;background-color:#fff;">
+  <h2>Galeria de Fotos</h2>
+  <p  style="color: red;font-size:15px; ">Campo requerido</p>
+  <p id="requeridoGaleria" style="color: red;font-size:15px;display:none; ">Ingrese almenos una imagen para complentar el formulario</p>
+  <input  style="display: block;" class="form-control" id="fileimagen"  type="file" (change)="fileSelected($event)">
+
+ </div>
+ <div class=" border-gray border mb-2" style="width: 100%;height:155px;">
+
+  <mat-grid-list cols="10" rowHeight="10:1" >
+    <mat-grid-tile *ngFor="let item of fuentes" style="height:150px;">
+        <button style="position: absolute;"  (click)="eliminarimagen(item)" mat-icon-button >
+        <mat-icon color="primary">delete</mat-icon>
+        </button>
+        <img style="height:150px;float: left;"  *ngIf="item" [src]="item" src=""/>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+
+<div  class="col-sm-5 border border-gray mb-2" >
+ <p><button _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="agregar()" >AGREGAR</button>
+ <button _ngcontent-c4 class="btn btn-danger btn-round" (click)="goBack()" >Cancelar</button>
+  </p>
+</div>
+
+
+
+
+
