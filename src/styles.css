@@ -14,6 +14,28 @@
  */
 /*      light colors - used for select dropdown         */
 /*           Font Smoothing      */
+
+#app-messenger, #app-whatsapp{
+  position: fixed;
+  right: 24px;
+  bottom: 100px;
+  width: 60px;
+  z-index: 1000;
+  display: none;
+}
+#app-whatsapp{
+  bottom: 95px;
+  display: block;
+}
+#app-messenger i, #app-whatsapp i{
+  font-size: 63px;
+}
+#app-whatsapp img{
+  color: #1ebea5;
+}
+#app-messenger i{
+  color: #0084ff;
+}
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, a, .td-name, td, button, input, select, textarea {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -197,7 +219,7 @@ body {
   font-size: 14px;
   font-weight: 300;
   font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
-  background-color:#F9FDFF ;
+
 }
 
 a {
@@ -314,11 +336,11 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 }
 
 .bg-primary {
-  background-color: #6dd3d6 !important;
+  background-color: #ffffff !important;
 }
 
 .bg-info {
-  background-color: #6ec7e0 !important;
+  background-color: #ffffff !important;
 }
 
 .bg-success {

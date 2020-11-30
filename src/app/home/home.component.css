@@ -1,0 +1,53 @@
+.slider{
+  width:100%;
+  height:100%;
+
+  }
+
+
+.frase1{
+  font-size: 50px; color: black;
+}
+.frase2{
+  font-size: 40px; color:blue;
+}
+.frase3{
+  font-size: 30px; color: white;
+
+}
+
+
+@media screen and (max-width:800px){
+  .slider{
+    width:100%;
+    height:80%;
+
+
+  }
+
+  .frase1{
+    font-size:200%;
+    color: black;
+  }
+  .frase2{
+    font-size: 200%; color:blue;
+  }
+  .frase3{
+    font-size: 150%; color: white;
+
+  }
+
+}
+
+
+.telefono{
+  background-color:black;
+
+  float: right;;
+  margin-right: 10%;
+  color: #ffff;
+  font-size:150%;
+
+}
+
+

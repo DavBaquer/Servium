@@ -1,3 +1,5 @@
+<div style="background-color: rgb(245, 245, 245);">
+<div class="container" style="background-color: white;">
 <h1 style="font-size: 33px;color: black; text-align: center;">Crea una Propiedad</h1>
 
 <div class="col-sm-6 border border-black mb-2 form-izquierda" >
@@ -58,12 +60,24 @@
    Codigo Postal:<input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="ubicacion.ubi_codpostal"/>
   </mat-label>
   <mat-label>
-   Barrio:  </mat-label>
-   <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="ubicacion.ubi_barrio"/>
+    Barrio:  </mat-label>
+    <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="ubicacion.ubi_barrio" />
+
+  <mat-label>
+   URL Mapa:  </mat-label>
+   <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="ubicacion.ubi_url" (change)="verMapa(ubicacion.ubi_url)"/>
+
+
+
+
+<br>
+
+  <div id="mapa">
+
+  </div>
  </div>
 
 <div style="clear: both;"></div>
-
 <div class="col-sm-6 border border-black mb-2 form-izquierda" >
 
   <h2>Caracteristicas Principales</h2>
@@ -99,7 +113,8 @@
 </div>
 
 
-<div class="col-sm-5 border border-gray mb-2 form-derecha" >
+<div class="col-sm-5 form-derecha" >
+  <div class="border border-gray mb-2 ">
   <h2>Agregar caracteristica adicional</h2>
   <p  style="color: red;font-size:15px; ">Campos requeridos (*)</p>
   <p id="requeridoadd" style="color: red;font-size:15px; display:none;">Ingres todos los campos requeridos del formulario</p>
@@ -125,6 +140,18 @@
       </button></th>
   </tr>
   </table>
+
+</div>
+
+<div class="border border-gray mb-2 ">
+  <h2>Agregar videos</h2>
+  <mat-label>
+    URL:
+  </mat-label><input   _ngcontent-c4 class="form-control" type="text" [(ngModel)]="multimedia.mul_video"/>
+
+  <button _ngcontent-c4 class="btn btn-info btn-round" (click)="verVideo()" >visualizar</button>
+  <div id="video"></div>
+</div>
  </div>
 
 
@@ -159,6 +186,6 @@
 </div>
 
 
+</div>
 
-
-
+</div>

@@ -1,0 +1,196 @@
+
+<div class="titulo">
+<br>
+<br>
+<br>
+ <h1 style="font-size: 300%; color:white;"><strong>{{propiedad.pro_titulo}}</strong></h1>
+
+</div>
+
+
+
+
+<div class="contenedor">
+<div class="col-sm-3  mb-2 form-derecha">
+  <div class="mb-3">
+
+    <div *ngIf="propiedad.pro_precio!='' || propiedad.pro_precio!=''" class=" mat-elevation-z8" style="background-color: gold; margin-bottom: 2%;">
+    <mat-label >Precio:</mat-label>
+    <P style="font-size:xx-large; color: white;" class=" mb-3" >
+     <strong>$ {{propiedad.pro_precio}}</strong>
+    </P>
+  </div>
+
+  <div *ngIf="propiedad.pro_alicuota!='' || propiedad.pro_alicuota!=''" class=" mat-elevation-z8" style="background-color: gold; margin-bottom: 2%;">
+    <mat-label>Alicuota:</mat-label>
+    <P style="font-size:xx-large; color: white;" class=" mb-3" >
+     $ {{propiedad.pro_alicuota}}
+    </P>
+  </div>
+
+  <div class=" mat-elevation-z8" style="margin-bottom: 2%;">
+    <mat-label> Descripción :</mat-label>
+    <p >
+      {{propiedad.pro_descripcion}}
+    </p>
+
+  </div>
+  </div>
+
+
+  </div>
+
+<div class="col-sm-9  mb-2 form-izquierda">
+  <div *ngIf="propiedad.fotos" class="mb-2 border border-gray mat-elevation-z8" style="text-align: center;background-color:#EBEBEB;"  >
+    <div class=" border-gray border mb-2" style="position: relative;">
+       <img id="imagen" style="max-width:100%;" src="{{propiedad.fotos[indexfoto].gal_imagen}}"/>
+      <button  id="btn-next"  (click)="avanzaFotos(1)" >&#62;</button>
+      <button  id="btn-prev"  (click)="avanzaFotos(-1)" >&#60;</button>
+    </div>
+   <div class=" border-gray border mb-2" style="width: 100%;height:80px;">
+    <mat-grid-list cols="10" rowHeight="10:1" >
+      <mat-grid-tile *ngFor="let item of propiedad.fotos" style="height:80px;">
+
+
+        <button  (click)="selectImagen(item)" ><img id="selectimagen"   *ngIf="item" [src]="item.gal_imagen" src=""/></button>
+
+
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    </div>
+
+  </div>
+
+
+
+
+<div *ngIf="propiedad.ubicacion" class=" mb-3 border border-gray mat-elevation-z8">
+  <h2 style="text-align: center;">UBICACION</h2>
+  <ul *ngIf="propiedad.ubicacion" style="list-style: none;">
+     <li>
+      <mat-icon>room</mat-icon> Dirección: {{propiedad.ubicacion.ubi_direccion}}
+     </li>
+     <li>
+      <mat-icon>location_city</mat-icon> Ciudad: {{propiedad.ubicacion.ubi_ciudad}}
+     </li>
+     <li>
+      <span class="material-icons">
+        account_balance
+        </span> Barrio: {{propiedad.ubicacion.ubi_barrio}}
+     </li>
+     <li>
+      Cod. Postal: {{propiedad.ubicacion.ubi_codpostal}}
+     </li>
+
+   </ul>
+
+</div>
+
+
+
+
+<div *ngIf="propiedad.caracteristica"  class=" mb-3 border border-gray mat-elevation-z8">
+  <h2 style="text-align: center;">CARACTERISTRICAS</h2>
+  <ul *ngIf="propiedad.caracteristica" style="column-count: 2;column-width:150px;">
+   <li *ngIf="propiedad.caracteristica.m_contruccion!=0"><P>
+     Metros de construcción:{{propiedad.caracteristica.m_contruccion}}  m<sup>2</sup>
+   </P></li>
+   <li *ngIf="propiedad.caracteristica.m_terreno!=0"><P>
+     Metros de terreno:{{propiedad.caracteristica.m_terreno}} m<sup>2</sup>
+   </P></li>
+   <li *ngIf="propiedad.caracteristica.anio_construccion!=''"><P>
+     Año de construccion:{{propiedad.caracteristica.anio_construccion}}
+   </P></li>
+   <li *ngIf="propiedad.caracteristica.habitacion!=0"><P>
+     Habitación:{{propiedad.caracteristica.habitacion}}
+   </P></li>
+   <li *ngIf="propiedad.caracteristica.bano_compartido!=0"><P>
+     Baño compartido:{{propiedad.caracteristica.bano_compartido}}
+   </P>
+ </li>
+ <li *ngIf="propiedad.caracteristica.bano_master!=0">
+   <p>
+     Baño master : {{propiedad.caracteristica.bano_master}}
+   </p>
+ </li>
+
+ <li *ngIf="propiedad.caracteristica.bano_social!=0">
+   <p>
+     Baño social: {{propiedad.caracteristica.bano_social}}
+   </p>
+ </li>
+ <li *ngIf="propiedad.caracteristica.linea_telf!=0">
+   <p>
+     Linea Telefonica: {{propiedad.caracteristica.linea_telf}}
+   </p>
+ </li>
+ <li *ngIf="propiedad.caracteristica.plantas!=0">
+   <p>
+     Plantas: {{propiedad.caracteristica.plantas}}
+   </p>
+ </li>
+ </ul>
+
+
+ </div>
+
+
+ <div *ngIf="propiedad.transaccion" class=" mb-3 border border-gray mat-elevation-z8">
+  <h2 style="text-align: center;">TRANSACCIÓN</h2>
+  <ul>
+     <li>
+       {{propiedad.transaccion.tra_nombre}}
+     </li>
+   </ul>
+</div>
+
+<div *ngIf="propiedad.categoria" class=" mb-3 border border-gray mat-elevation-z8">
+  <h2 style="text-align: center;">CATEGORIA</h2>
+  <ul>
+     <li>
+       {{propiedad.categoria.cat_nombre}}
+     </li>
+   </ul>
+</div>
+
+
+<div  *ngIf="propiedad.adicionales" class=" mb-3 border border-gray mat-elevation-z8">
+  <h2 style="text-align: center;">DETALLES</h2>
+  <div  *ngIf="propiedad.adicionales">
+  <ul  *ngFor="let item of propiedad.adicionales">
+     <li>
+      {{item.add_nombre}}: {{item.add_descripcion}}
+     </li>
+   </ul>
+  </div>
+</div>
+
+<div id="video"  class=" mb-3 border border-gray mat-elevation-z8" style="text-align: center;">
+
+</div>
+
+<div id="mapa"  class=" mb-3 border border-gray mat-elevation-z8" style="text-align: center;">
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<div style="clear: both;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,7 +7,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
-import { AdminNanabarComponent } from './admin-nanabar/admin-nanabar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
@@ -31,8 +30,21 @@ import { PanePropiedadesComponent } from './pane-propiedades/pane-propiedades.co
 import {NgxPaginationModule} from 'ngx-pagination';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { DetallePropiedadComponent } from './detalle-propiedad/detalle-propiedad.component';
-import { ModalUbicacionComponent } from './modales/modal-ubicacion/modal-ubicacion.component';
 import { LoginComponent } from './login/login.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { LogautComponent } from './logaut/logaut.component';
+import { FooterComponent } from './footer/footer.component';
+import { PublicacionComponent } from './publicacion/publicacion.component';
+import { DetallePublicacionComponent } from './detalle-publicacion/detalle-publicacion.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { FilterPipe } from './pipes/filter.pipe';
+import { FilterTransaccionPipe } from './pipes/filter-transaccion.pipe';
+import { FilterCategoriaPipe } from './pipes/filter-categoria.pipe';
+import { FilterUbicacionPipe } from './pipes/filter-ubicacion.pipe';
+import { ContactoComponent } from './contacto/contacto.component';
+import { PublicidadComponent } from './publicidad/publicidad.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { UpgradeUsuarioComponent } from './upgrade-usuario/upgrade-usuario.component';
 
 
 @NgModule({
@@ -41,7 +53,6 @@ import { LoginComponent } from './login/login.component';
     NavbarComponent,
     AboutComponent,
     HomeComponent,
-    AdminNanabarComponent,
     AdminPanelComponent,
     CategoriaComponent,
     TransaccionComponent,
@@ -49,8 +60,19 @@ import { LoginComponent } from './login/login.component';
     ListaPropiedadComponent,
     PanePropiedadesComponent,
     DetallePropiedadComponent,
-    ModalUbicacionComponent,
-    LoginComponent
+    LoginComponent,
+    UsuarioComponent,
+    LogautComponent,
+    FooterComponent,
+    PublicacionComponent,
+    DetallePublicacionComponent,
+    FilterPipe,
+    FilterTransaccionPipe,
+    FilterCategoriaPipe,
+    FilterUbicacionPipe,
+    ContactoComponent,
+    PublicidadComponent,
+    UpgradeUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +95,9 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     NgxPaginationModule,
     MatCarouselModule.forRoot(),
+    MatRadioModule,
+    MatMenuModule
+
 
   ],
   providers: [],

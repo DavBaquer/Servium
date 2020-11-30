@@ -28,4 +28,7 @@ findbyid(id:number){
     return this.http.post(`${this.url}/update.php`,JSON.stringify(propiedad));
     }
 
+    delete(id:number){
+      return this.http.get(`${this.url}/eliminar.php?id=${id}`);
+      }
 }

@@ -66,6 +66,17 @@ export class ListaPropiedadComponent implements OnInit {
     });
   }
 
+  eliminar(id:number){
+    this.propiedadService.delete(id).subscribe(datos=>{
+      if(datos['resultado']=='OK'){
+        alert(datos['mensaje']);
+        this.getPropiedades();
+      }else{
+        alert("no se elimino");
+      }
+    });
+  }
+
 
 }
 

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BienesRaices';
+  constructor(private location:Location){}
+
+
+  removeFooter() {
+        var titlee = this.location.prepareExternalUrl(this.location.path());
+        titlee = titlee.slice( 1 );
+        if(titlee === 'signup' || titlee === 'nucleoicons'){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }

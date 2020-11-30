@@ -1,0 +1,40 @@
+table {
+  width: 100%;
+  background-color:white;
+
+}
+
+td, th {
+  width: 25%;
+
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+
+
+#form-add{
+  display:none;
+  background-color: white;
+}
+#btn-add{
+  display:block;
+}
+
+#btn-agregar{
+  pointer-events:all;
+}
+#requerido{
+  display: none;
+}
+@media screen and (max-width:800px){
+  td p,th p{
+      font-size: 10px;
+
+  }
+
+}
+
+

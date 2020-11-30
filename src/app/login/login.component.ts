@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder,Validators} from '@angular/forms'
-import{Router} from '@angular/router'
-import { relative } from 'path';
+import {FormBuilder,Validators} from '@angular/forms';
+import{Router} from '@angular/router';
+
+import { LoginService } from '../login.service';
+import { usuario } from '../model/usuario';
+
 
 
 @Component({
@@ -11,13 +14,16 @@ import { relative } from 'path';
 })
 export class LoginComponent implements OnInit {
  private isValidEmail= /\S+@\S+\.\S+/;
-
+ private usuario:usuario=new usuario();
+ private redirectrout="";
  loginForm=this.fb.group({
          username:['',[Validators.required,Validators.pattern(this.isValidEmail)]],
          password:['',[Validators.required,Validators.minLength(5)]],
  });
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder,
+               private loginService:LoginService,
+               private router:Router) { }
 
   ngOnInit(): void {
 
@@ -47,6 +53,35 @@ export class LoginComponent implements OnInit {
 
   onLogin(){
 
+    this.getusuario();
+
+   this.loginService.login(this.usuario);
+   if(sessionStorage.getItem('userToken')){
+    console.log("enmtro aqui");
+      this.redirectrout= this.loginService.urlintetoAcceder;
+      this.loginService.urlintetoAcceder='';
+       this.router.navigate([this.redirectrout]);
   }
+
+
+
+
+  }
+
+
+  getusuario(){
+    this.usuario.usu_correo=this.loginForm.get('username').value;
+    this.usuario.usu_password=this.loginForm.get('password').value;
+    return this.usuario;
+  }
+
+  mostrarContrasena(){
+    var tipo =<HTMLInputElement> document.getElementById("password");
+    if(tipo.type == "password"){
+        tipo.type = "text";
+    }else{
+        tipo.type = "password";
+    }
+}
 
 }

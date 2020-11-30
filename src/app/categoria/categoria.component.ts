@@ -84,6 +84,7 @@ export class CategoriaComponent implements OnInit{
      elemento.style.display = 'block';
       }
 
+      this.categoria= new categoria();
 
    }
 

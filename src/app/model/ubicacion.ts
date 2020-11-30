@@ -5,4 +5,5 @@ export class ubicacion{
   ubi_codpostal:string=null;
   ubi_barrio:string=null;
   pro_id:number=null;
+  ubi_url:string=null;
 }

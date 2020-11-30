@@ -1,9 +1,107 @@
 
 
-<h1>DETALLE DE LA PROPIEDAD</h1>
-<h2 style="text-align: center; color: #000;"><strong>Titulo:{{propiedad.pro_titulo}}</strong></h2>
 
-  <div *ngIf="propiedad.fotos" class="col-sm-9 border border-gray mb-2  form-izquierda mat-elevation-z8" style="text-align: center;background-color: #DAF2FF;"  >
+<h1>DETALLE DE LA PROPIEDAD</h1>
+<div class="titulo">
+  <br>
+  <br>
+  <br>
+   <h1 style="font-size: 300%; color:white;"><strong>{{propiedad.pro_titulo}}</strong></h1>
+
+  </div>
+
+
+<div class="contenedor">
+  <div class="col-sm-3  mb-2 form-derecha">
+    <div class="mb-3">
+
+      <div *ngIf="propiedad.pro_precio!='' || propiedad.pro_precio!=''" class=" mat-elevation-z8 titulo-precio" >
+      <mat-label >Precio:</mat-label>
+      <P  class="etiqueta-numero mb-3" >
+       <strong>$ {{propiedad.pro_precio}}</strong>
+      </P>
+    </div>
+
+    <div *ngIf="propiedad.pro_alicuota!='' || propiedad.pro_alicuota!=''" class=" mat-elevation-z8 titulo-precio" >
+      <mat-label>Alicuota:</mat-label>
+      <P  class="etiqueta-numero mb-3 mb-3" >
+       $ {{propiedad.pro_alicuota}}
+      </P>
+    </div>
+
+    <div class=" mat-elevation-z8" style="margin-bottom: 2%;">
+      <mat-label> Descripción :</mat-label>
+      <p >
+        {{propiedad.pro_descripcion}}
+      </p>
+
+    </div>
+    </div>
+    <p><button _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="modal.open(contpublicacion)" >Editar</button>
+
+    </p>
+
+
+    <ng-template #contpublicacion let-modal>
+      <div class="modal-header">
+       <h2 class="modal-title">Datos de la publicación</h2>
+         <button class="close btn-danger" aria-label="close" type="button" (click)="cerrarModal()">
+           <span  aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="etiqueta-requerodo">Campos requeridos (*)</p>
+          <p id="requerido" class="etiqueta-requerodo">Ingres todos los campos requeridos del formulario</p>
+         <mat-label>
+          Titulo<label style="color: red;">*</label>:
+          </mat-label><input _ngcontent-c4 class="form-control"  type="text" [(ngModel)]="propiedad2.pro_titulo"/>
+
+
+            <mat-label>
+            Descripción<label style="color: red;">*</label>:
+            </mat-label>
+            <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="propiedad2.pro_descripcion"/>
+
+
+            <mat-label>
+            Precio:
+          </mat-label><input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="propiedad2.pro_precio"/>
+
+          <mat-label>
+            Alicuota:
+          </mat-label>
+          <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="propiedad2.pro_alicuota"/>
+
+
+          <mat-label>
+          Categoria:
+          <label style="color: red;">*</label>:{{seleccionado1.cat_nombre}}
+          </mat-label>
+          <select name="miselect" [(ngModel)]="seleccionado1" _ngcontent-c4 class="form-control">
+            <option [ngValue]="objeto" *ngFor="let objeto of categorias">{{objeto.cat_nombre}}</option>
+            </select>
+
+            <mat-label>
+            Transaccion:<label style="color: red;">*</label>:{{seleccionado2.tra_nombre}}
+          </mat-label>
+           <select name="miselect" [(ngModel)]="seleccionado2" _ngcontent-c4 class="form-control"   >
+              <option  [ngValue]="objeto" *ngFor="let objeto of transacciones" >{{objeto.tra_nombre}}</option>
+              </select>
+
+
+                <button   _ngcontent-c4 class="btn btn-info btn-round" id="btn-editar" (click)="editarPublicacion()">Editar</button>
+
+
+        </div>
+
+
+    </ng-template>
+
+
+    </div>
+
+<div class="col-sm-9  mb-2 form-izquierda">
+  <div *ngIf="propiedad.fotos" class="border border-gray mb-3  mat-elevation-z8 canvas-galeria" >
     <div class=" border-gray border mb-2" style="position: relative;">
        <img id="imagen" style="max-width:100%;" src="{{propiedad.fotos[indexfoto].gal_imagen}}"/>
       <button  id="btn-next"  (click)="avanzaFotos(1)" >&#62;</button>
@@ -39,15 +137,15 @@
         <div class="modal-body">
           <div class=" border-gray border mb-2" style="width: 100%;background-color:#fff;">
             <h2>Galeria de Fotos</h2>
-            <p  style="color: red;font-size:15px; ">Campo requerido</p>
-            <p id="requeridoGaleria" style="color: red;font-size:15px;display:none; ">Ingrese almenos una imagen para complentar el formulario</p>
+            <p class="etiqueta-requerodo">Campo requerido</p>
+            <p id="requeridoGaleria" class="etiqueta-requerodo" style="display:none; ">Ingrese almenos una imagen para complentar el formulario</p>
             <input  style="display: block;" class="form-control" id="fileimagen"  type="file" (change)="fileSelected($event)">
 
            </div>
-           <div class=" border-gray border mb-2" style="width: 100%;height:155px;">
+           <div class=" border-gray border mb-2" style="width: 100%;height:500px;">
 
             <mat-grid-list cols="2" rowHeight="2:1" >
-              <mat-grid-tile *ngFor="let item of fotos" style="height:150px;">
+              <mat-grid-tile *ngFor="let item of fotos">
                   <button style="position: absolute;"  (click)="eliminarimagen(item)" mat-icon-button >
                   <mat-icon color="primary">delete</mat-icon>
                   </button>
@@ -64,84 +162,8 @@
 
   </div>
 
-<div class="col-sm-3 border border-gray mb-2  form-derecha mat-elevation-z8">
 
-  <P >
-    precio:{{propiedad.pro_precio}}
-  </P>
-  <P>
-    Alicuota:{{propiedad.pro_alicuota}}
-  </P>
-
-  <p >
-    Descripción : {{propiedad.pro_descripcion}}
-  </p>
-
-  <p><button _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="modal.open(contpublicacion)" >Editar</button>
-
-  </p>
-
-
-  <ng-template #contpublicacion let-modal>
-    <div class="modal-header">
-     <h2 class="modal-title">Datos de la publicación</h2>
-       <button class="close btn-danger" aria-label="close" type="button" (click)="cerrarModal()">
-         <span  aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p  style="color: red;font-size:15px; ">Campos requeridos (*)</p>
-        <p id="requerido" style="color: red;font-size:15px; ">Ingres todos los campos requeridos del formulario</p>
-       <mat-label>
-        Titulo<label style="color: red;">*</label>:
-        </mat-label><input _ngcontent-c4 class="form-control"  type="text" [(ngModel)]="propiedad2.pro_titulo"/>
-
-
-          <mat-label>
-          Descripción<label style="color: red;">*</label>:
-          </mat-label>
-          <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="propiedad2.pro_descripcion"/>
-
-
-          <mat-label>
-          Precio:
-        </mat-label><input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="propiedad2.pro_precio"/>
-
-        <mat-label>
-          Alicuota:
-        </mat-label>
-        <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="propiedad2.pro_alicuota"/>
-
-
-        <mat-label>
-        Categoria:
-        <label style="color: red;">*</label>:{{seleccionado1.cat_nombre}}
-        </mat-label>
-        <select name="miselect" [(ngModel)]="seleccionado1" _ngcontent-c4 class="form-control">
-          <option [ngValue]="objeto" *ngFor="let objeto of categorias">{{objeto.cat_nombre}}</option>
-          </select>
-
-          <mat-label>
-          Transaccion:<label style="color: red;">*</label>:{{seleccionado2.tra_nombre}}
-        </mat-label>
-         <select name="miselect" [(ngModel)]="seleccionado2" _ngcontent-c4 class="form-control"   >
-            <option  [ngValue]="objeto" *ngFor="let objeto of transacciones" >{{objeto.tra_nombre}}</option>
-            </select>
-
-
-              <button   _ngcontent-c4 class="btn btn-info btn-round" id="btn-editar" (click)="editarPublicacion()">Editar</button>
-
-
-      </div>
-
-
-  </ng-template>
-
-
-</div>
-
-
-<div  class="col-sm-9 border border-gray mb-2 form-izquierda mat-elevation-z8">
+<div  class="border border-gray mb-3 mat-elevation-z8">
   <h2 style="text-align: center;">UBICACION</h2>
   <ul *ngIf="propiedad.ubicacion">
      <li>
@@ -158,6 +180,10 @@
      </li>
 
    </ul>
+
+   <div  id="mapa">
+
+  </div>
 
    <p><button *ngIf="propiedad.ubicacion" _ngcontent-c4 class="btn btn-success btn-round"   (click)="modal.open(contubicacion)" >Editar</button>
     <button *ngIf="propiedad.ubicacion" _ngcontent-c4 class="btn btn-danger btn-round"  (click)="eliminarUbicacion(ubicacion.ubi_id)">Eliminar</button>
@@ -192,6 +218,15 @@
             Barrio:  </mat-label>
             <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="ubicacion.ubi_barrio"/>
           </div>
+          <mat-label>
+            URL Mapa:  </mat-label>
+            <input  _ngcontent-c4 class="form-control" type="text" [(ngModel)]="ubicacion.ubi_url" (change)="verMapa(ubicacion.ubi_url)"/>
+
+            <br>
+
+            <div id="mapaedit">
+
+            </div>
 
           <p>
             <button *ngIf="!propiedad.ubicacion" _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="agregarUbicacion()" >AGREGAR</button>
@@ -204,7 +239,7 @@
 
 
 
-<div   class="col-sm-9 border border-gray mb-2 form-izquierda mat-elevation-z8">
+<div   class="border border-gray mb-3 mat-elevation-z8">
   <h2 style="text-align: center;">CARACTERISTRICAS</h2>
   <ul *ngIf="propiedad.caracteristica" style="column-count: 2;column-width:150px;">
    <li><P>
@@ -298,7 +333,7 @@
  </div>
 
 
- <div *ngIf="propiedad.transaccion" class="col-sm-9 border border-gray mb-2 form-izquierda mat-elevation-z8">
+ <div *ngIf="propiedad.transaccion" class="border border-gray mb-2 mat-elevation-z8">
   <h2 style="text-align: center;">TRANSACCIÓN</h2>
   <ul>
      <li>
@@ -307,7 +342,7 @@
    </ul>
 </div>
 
-<div *ngIf="propiedad.categoria" class="col-sm-9 border border-gray mb-2 form-izquierda mat-elevation-z8">
+<div *ngIf="propiedad.categoria" class="border border-gray mb-2 mat-elevation-z8">
   <h2 style="text-align: center;">CATEGORIA</h2>
   <ul>
      <li>
@@ -317,7 +352,7 @@
 </div>
 
 
-<div class="col-sm-9 border border-gray mb-2 form-izquierda mat-elevation-z8">
+<div class="border border-gray mb-3  mat-elevation-z8">
   <h2 style="text-align: center;">DETALLES</h2>
   <div  *ngIf="adicionales">
   <ul  *ngFor="let item of adicionales">
@@ -340,8 +375,8 @@
          </button>
        </div>
        <div class="modal-body">
-        <p  style="color: red;font-size:15px; ">Campos requeridos (*)</p>
-        <p id="requeridoadd" style="color: red;font-size:15px; display:none;">Ingres todos los campos requeridos del formulario</p>
+        <p class="etiqueta-requerodo">Campos requeridos (*)</p>
+        <p id="requeridoadd" class="etiqueta-requerodo" style="display:none;">Ingres todos los campos requeridos del formulario</p>
         <mat-label>
          Nombre<label style="color: red;">*</label>:
          </mat-label><input _ngcontent-c4 class="form-control"  type="text" [(ngModel)]="adicional.add_nombre"/>
@@ -354,7 +389,6 @@
 
 
         </p>
-
         <table *ngFor="let item of adicionales">
           <tr>
           <th>{{item.add_nombre}}:</th>
@@ -372,6 +406,62 @@
    </ng-template>
 
 </div>
+
+
+<div   class=" mb-3 border border-gray mat-elevation-z8" style="text-align: center;">
+
+
+  <div  id="video">
+
+  </div>
+
+
+  <p><button *ngIf="propiedad.multimedia" _ngcontent-c4 class="btn btn-success btn-round"   (click)="modal.open(contmultimedia)" >Editar</button>
+    <button *ngIf="propiedad.multimedia" _ngcontent-c4 class="btn btn-danger btn-round"  (click)="eliminarMultimedia(multimedia.mul_id)">Eliminar</button>
+    <button *ngIf="!propiedad.multimedia" _ngcontent-c4 class="btn btn-info btn-round"  (click)="modal.open(contmultimedia)" >Agregar</button>
+
+
+  </p>
+
+
+   <ng-template #contmultimedia let-modal>
+     <div class="modal-header">
+      <h2 class="modal-title">Multimedia</h2>
+        <button class="close btn-danger" aria-label="close" type="button" (click)="cerrarModal()">
+          <span  aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+        <h2>Agregar videos</h2>
+        <mat-label>
+          URL:
+        </mat-label><input   _ngcontent-c4 class="form-control" type="text" [(ngModel)]="multimedia.mul_video"/>
+
+        <button _ngcontent-c4 class="btn btn-info btn-round" (click)="verVideo()" >visualizar</button>
+        <div id="videoedit"></div>
+
+
+          </div>
+
+          <p>
+            <button *ngIf="!propiedad.multimedia" _ngcontent-c4 class="btn btn-success btn-round" id="btn-agregar"  (click)="agregarMultimedia()" >AGREGAR</button>
+            &nbsp;
+            <button  *ngIf="propiedad.multimedia" _ngcontent-c4 class="btn btn-info btn-round" id="btn-editar" (click)="editarMultimedia()" >Editar</button>
+            </p>
+   </ng-template>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+<div style="clear: both;"></div>
 
 
 

@@ -5,8 +5,8 @@
     <title>SERVIUM</title>
     <base href="/">
 
-    <link rel="icon" type="image/png" href="assets/img/logoservium.jpg">
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/logoservium.jpg">
+    <link rel="icon" type="image/png" href="assets/img/servium.png">
+    <link rel="apple-touch-icon" sizes="90x90" href="assets/img/servium.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -16,8 +16,42 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
 </head>
 <body class="mat-typography">
     <app-root></app-root>
+
+    <a  class="animate__animated animate__heartBeat animate__infinite"  id="app-whatsapp" target="_blanck" href="https://api.whatsapp.com/send?phone=593981542097&amp;text=Buenos días!&nbsp;me&nbsp;pueden&nbsp;ayudar?">
+      <img style="width:80%;"  src="../assets/img/whatsappverde.png">
+    </a>
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v9.0'
+        });
+      };
+
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat"
+      attribution=setup_tool
+      page_id="104853201474244">
+    </div>
+
+</div>
+
 </body>
+
 </html>

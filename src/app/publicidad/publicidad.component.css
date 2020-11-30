@@ -1,0 +1,39 @@
+table {
+  width: 100%;
+  background-color:white;
+  padding: 5%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+
+
+#form-add{
+  display:none;
+  background-color: white;
+}
+#btn-add{
+  display:block;
+}
+
+#btn-agregar{
+  pointer-events:all;
+}
+#requerido{
+  display: none;
+}
+
+.imagen-publicidad{
+  height: 50%;
+   width: 100%;
+}
+
+@media screen and (max-width:800px){
+  .imagen-publicidad{
+    height: 25%;
+     width: 100%;
+  }
+}

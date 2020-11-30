@@ -55,5 +55,36 @@
   right: 10px;
 }
 
+.titulo{
+  height:30%;
+  background-image:url(../../assets/img/joshua-stannard.jpg);
+  text-align: center;
+  color: white;
+  vertical-align: middle;
+}
+
+.contenedor{
+  margin-left: 5%;
+  margin-right: 5%;
+
+}
+
+.titulo-precio{
+  background-color: gold;
+   margin-bottom: 2%;
+}
+.etiqueta-numero{
+  font-size:xx-large;
+  color: white;
+}
+.canvas-galeria{
+  text-align: center;
+  background-color: #DAF2FF;
+}
 
 
+
+.etiqueta-requerodo{
+  color: red;
+  font-size:15px;
+}

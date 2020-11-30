@@ -1,4 +1,5 @@
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
   body{
     height:100vh;
     margin:0;
@@ -6,7 +7,21 @@
 
   }
 
+  .card-avatar {
+    max-width: 120px;
+    max-height: 120px;
+    margin: -60px auto 0;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .card-avatar.border-white {
+    border: 4px solid #FFFFFF;
+  }
 
+  .card-avatar img {
+    max-width: 100%;
+    height: auto;
+  }
   .example-container {
     width: 100%;
     height: 100%;
@@ -30,4 +45,47 @@
   }
   .example-spacer {
     flex: 1 1 auto;
+  }
+
+
+
+  @media screen and (max-width: 766px){
+    #fb-root{
+      display: none;
+    }
+    #app-messenger{
+      display: block;
+    }
+  }
+.contenedor{
+  margin-left: 50%;
+  margin-right: 50%;
+
+}
+
+
+.slider{
+  width:100%;
+  height:100%;
+
+  }
+
+.space-nav{
+  max-height: 175px;
+  height: 100%;
+}
+
+@media screen and (max-width:800px){
+
+  .space-nav{
+    max-height:180px;
+      height: 100%;
+    }
+}
+
+@media screen and (max-width: 320px){
+  .space-nav{
+    max-height:150px;
+      height: 100%;
+    }
   }

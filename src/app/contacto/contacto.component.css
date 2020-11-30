@@ -1,0 +1,78 @@
+.titulo{
+
+  opacity: 0,5;
+  text-align: center;
+  vertical-align: middle;
+}
+.titulo h1{
+  font-size: 300%; color:white;
+}
+
+.div-form{
+  margin: 5%;
+  margin-top: 2%;
+  width: 80%;
+  display: inline-block;
+  align-items: center;
+  background-color: #9fd3fd;
+  border: 1px solid black;
+  opacity: 0.8;
+}
+
+.div-contacto{
+  border-right: 1px solid black;
+
+}
+
+.input-form{
+
+  width: 70%;
+  color: #000;
+}
+
+.contenedor{
+  background: url(../../assets/img/login-servium.png);
+  background-repeat:round ;
+  border: 2px solid black;
+  align-items: center;
+
+  vertical-align: middle;
+  text-align: center;
+}
+
+
+.lista-contacto{
+  width: 100%;
+  list-style: none;
+
+}
+.lista-contacto li{
+  margin-top: 20%;
+   margin-bottom: 10%;
+}
+
+.map{
+   width: 80%;
+   height:500px;
+}
+.fondo-imagen{
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  max-height:150px;
+  height:100%;
+}
+
+@media screen and (max-width:575px){
+.div-contacto{
+  border-bottom: 1px solid black;
+  border-right: 0px solid black;
+
+}
+
+.titulo h1{
+  font-size: 200%; color:white;
+}
+
+}

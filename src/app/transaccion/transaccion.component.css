@@ -1,7 +1,7 @@
 table {
   width: 100%;
   background-color:white;
-  padding: 5%;
+
 }
 
 .mat-form-field {
@@ -14,7 +14,7 @@ td, th {
 
 }
 .header-table {
-  background-color: gold;
+  background-color:lightsteelblue;
 }
 
 #form-add{

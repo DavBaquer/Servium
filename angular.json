@@ -30,6 +30,7 @@
               "src/assets/sass/paper-kit.scss",
               "src/assets/css/demo.css",
               "src/assets/css/nucleo-icons.css"
+
             ],
             "scripts": []
           },
@@ -52,7 +53,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
+                  "maximumWarning": "4mb",
                   "maximumError": "5mb"
                 },
                 {

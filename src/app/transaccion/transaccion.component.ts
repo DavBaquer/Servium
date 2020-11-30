@@ -80,7 +80,7 @@ export class TransaccionComponent implements OnInit {
     if (elemento != null) {
      elemento.style.display = 'block';
       }
-
+     this.transaccion= new transaccion();
 
    }
 

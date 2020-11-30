@@ -10,6 +10,7 @@ import { ubicacion } from '../model/ubicacion';
 import { PropiedadesService } from '../propiedades.service';
 import { TransaccionService } from '../transaccion.service';
 import {Location} from '@angular/common';
+import { multimedia } from '../model/multimedia';
 
 
 
@@ -33,7 +34,7 @@ export class PropiedadesComponent implements OnInit {
   validacion:boolean=false;
   validacionadd:boolean=false;
   validacionGal:boolean=false;
-
+  multimedia:multimedia=new multimedia();
 
 
   constructor(private propiedadService:PropiedadesService,private categoriaService:CategoriaService,private transaccionService:TransaccionService,private location:Location ) {
@@ -156,6 +157,10 @@ verificarElementos(){
     this.propiedad.transaccion=this.seleccionado2;
     }else{
       this.propiedad.transaccion=null;
+    }
+
+    if(this.multimedia.mul_video!="" && this.multimedia.mul_video!=null){
+       this.propiedad.multimedia=this.multimedia;
     }
 
 
@@ -313,6 +318,25 @@ validarGaleria(){
 
   }
 }
+
+verVideo(){
+  const baseurl="https://www.youtube.com/embed/";
+  var srting:string=this.multimedia.mul_video;
+  var saludoArray = srting.split('=');
+  var ultima      = saludoArray[saludoArray.length - 1];
+  this.multimedia.mul_video= baseurl+ultima;
+  console.log(this.multimedia.mul_video)
+  let video=document.getElementById("video");
+  video.innerHTML="<iframe width='100%' height='300px' src='"+this.multimedia.mul_video+"'allowfullscreen></iframe>"
+}
+
+verMapa(urlmap:string){
+
+  let video=document.getElementById("mapa");
+  video.innerHTML=" <iframe src='"+urlmap+"' width='100%' height='300' frameborder='0' style='border:0;' allowfullscreen='' aria-hidden='false'  tabindex='0'></iframe>";
+
+}
+
 
 goBack(){
   this.location.back();

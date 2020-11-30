@@ -1,0 +1,32 @@
+<footer class="footer"  style="background-color: #d1d1d1;">
+  <div class="container" >
+
+      <div class="col" style="text-align: center;">
+<div class="row">
+  <nav>
+  <ul >
+    <li><a href="https://www.creative-tim.com" target="_blank"><img class="imagen-footer" src="../../assets/img/gorjeo.png"></a></li>
+    <li><a href="http://blog.creative-tim.com" target="_blank"><img class="imagen-footer" src="../../assets/img/facebook.png"></a></li>
+    <li><a href="https://www.creative-tim.com/license" target="_blank"><img class="imagen-footer" src="../../assets/img/instagram.png"></a></li>
+    <li><a  target="_blank" href="https://api.whatsapp.com/send?phone=593981542097&amp;text=Buenos días!&nbsp;me&nbsp;interesa&nbsp;contactarme con ustedes?"><img class="imagen-footer" src="../../assets/img/whatsappverde.png"></a></li>
+  </ul>
+</nav>
+
+          <div class="credits ml-auto">
+              <span class="copyright">
+                  © {{test | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by David Barrera
+              </span>
+          </div>
+          <ul style="list-style: none;">
+            <li *ngIf="!usuarioLogeado" class="nav-item" >
+              <a routerLink="admin" class="btn btn-succes btn-round" >Log in</a>
+            </li>
+
+
+        </ul>
+
+      </div>
+      </div>
+    </div>
+</footer>
+

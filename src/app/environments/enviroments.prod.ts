@@ -1,4 +1,4 @@
 export const enviroment={
   producction:true,
-  baseUrl:"."
+  baseUrl:"./bienesraices"
 };

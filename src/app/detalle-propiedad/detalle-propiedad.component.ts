@@ -16,6 +16,8 @@ import { PropiedadesService } from '../propiedades.service';
 import { TransaccionService } from '../transaccion.service';
 import { UbicacionService } from '../ubicacion.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap'
+import { MultimediaService } from '../multimedia.service';
+import { multimedia } from '../model/multimedia';
 
 @Component({
   selector: 'app-detalle-propiedad',
@@ -39,6 +41,7 @@ export class DetallePropiedadComponent implements OnInit {
   seleccionado2:transaccion=null;
   fotos:galeria[];
   indexfoto:number;
+  multimedia:multimedia=new multimedia();
 
 
   constructor(private rout:ActivatedRoute,private propiedadService:PropiedadesService,private categoriaService:CategoriaService,
@@ -48,6 +51,7 @@ export class DetallePropiedadComponent implements OnInit {
     private caracteristicaService:CaracteristicaService,
     private ubicacionService:UbicacionService,
     private adicionalService:AdicionalService,
+    private multimediaService:MultimediaService,
     public modal:NgbModal) {
 
   }
@@ -59,6 +63,8 @@ export class DetallePropiedadComponent implements OnInit {
     this.getAllCategorias();
     this.getAllTransaccion();
     this.indexfoto=0;
+
+
   }
 
   getPropiedad():void{
@@ -76,8 +82,8 @@ export class DetallePropiedadComponent implements OnInit {
         this.cargarCategoria(this.propiedad['cat_id'])
         this.cargarUbicacion();
         this.cargarAdicional();
+        this.cargarMultimedia();
 
-        console.log(this.propiedad);
 
       }else{
         alert(datos['mensaje']);
@@ -167,6 +173,11 @@ cargarUbicacion(){
      var prueb=JSON.parse(datos['resp']);
      this.propiedad.ubicacion=<ubicacion> prueb[0];
      this.ubicacion= Object.assign({}, <ubicacion> prueb[0]);
+     let video=document.getElementById("mapa");
+     video.innerHTML=" <iframe src='"+this.propiedad.ubicacion.ubi_url+"' width='100%' height='300' frameborder='0' style='border:0;' allowfullscreen='' aria-hidden='false'  tabindex='0'></iframe>";
+
+
+
     }
   });
 }
@@ -179,8 +190,32 @@ cargarAdicional(){
       var adicional:adicional[]= <adicional[]> prueb;
       this.propiedad.adicionales=adicional;
       this.adicionales=adicional;
+
+
     }
 });
+}
+
+
+cargarMultimedia(){
+  this.multimediaService.findbypro(this.propiedad.pro_id).subscribe(datos=>{
+    if(datos['resultado']=='OK'){
+     var prueb=JSON.parse(datos['resp']);
+     console.log(prueb);
+     this.propiedad.multimedia=<multimedia>prueb[0];
+     this.multimedia=Object.assign({}, <multimedia> prueb[0]);
+
+     let video=document.getElementById("video");
+     video.innerHTML="<iframe width='100%' height='300px' src='"+this.multimedia.mul_video+"'allowfullscreen></iframe>"
+
+
+    }else
+    {
+      let video=document.getElementById("video");
+     video.innerHTML=""
+
+    }
+  });
 }
 
 
@@ -193,6 +228,8 @@ agregaradicional(){
      console.log("no existe elemento que agregar");
    }else{
        this.adicional.pro_id=this.propiedad.pro_id;
+
+
 
     this.adicionalService.add(this.adicional).subscribe(datos=>{
       if(datos['resultado']=='OK'){
@@ -357,6 +394,23 @@ agregarCaracteristica(){
   });
  }
 }
+
+agregarMultimedia(){
+
+  this.multimedia.pro_id=this.propiedad.pro_id;
+
+  this.multimediaService.add(this.multimedia).subscribe(datos=>{
+    if(datos['resultado']=='OK'){
+      alert(datos['mensaje']);
+      this.getPropiedad();
+      this.modal.dismissAll();
+    }else{
+      alert(datos['mensaje']);
+    }
+  });
+}
+
+
 editarCaracteristica(){
   this.caracteristicaService.update(this.caracteristica).subscribe(datos=>{
     if(datos['resultado']=='OK'){
@@ -368,6 +422,20 @@ editarCaracteristica(){
     }
   });
 }
+
+
+editarMultimedia(){
+  this.multimediaService.update(this.multimedia).subscribe(datos=>{
+    if(datos['resultado']=='OK'){
+      alert(datos['mensaje']);
+      this.getPropiedad();
+      this.modal.dismissAll();
+    }else{
+      alert(datos['mensaje']);
+    }
+  });
+}
+
 
 
 eliminarUbicacion(id:number){
@@ -393,6 +461,21 @@ eliminarCaracteristica(id:number){
   });
 
 }
+
+eliminarMultimedia(id:number){
+  this.multimediaService.delete(id).subscribe(datos=>{
+    if(datos['resultado']=='OK'){
+      alert(datos['mensaje']);
+      this.getPropiedad();
+    }else{
+      alert("no se elimino");
+    }
+  });
+
+}
+
+
+
 
 fileSelected(event)
 { if(this.fotos.length<10){
@@ -490,8 +573,23 @@ avanzaFotos(num:number){
     this.indexfoto=this.fotos.length-1;
   }
 
+}
 
+verVideo(){
+  const baseurl="https://www.youtube.com/embed/";
+  var srting:string=this.multimedia.mul_video;
+  var saludoArray = srting.split('=');
+  var ultima      = saludoArray[saludoArray.length - 1];
+  this.multimedia.mul_video= baseurl+ultima;
+  console.log(this.multimedia.mul_video)
+  let video=document.getElementById("videoedit");
+  video.innerHTML="<iframe width='100%' height='300px' src='"+this.multimedia.mul_video+"'allowfullscreen></iframe>"
+}
 
+verMapa(urlmap:string){
+
+  let video=document.getElementById("mapaedit");
+  video.innerHTML=" <iframe src='"+urlmap+"' width='100%' height='300' frameborder='0' style='border:0;' allowfullscreen='' aria-hidden='false'  tabindex='0'></iframe>";
 
 }
 cerrarModal(){

@@ -1,3 +1,4 @@
+<div class="container">
 <h1 style="font-size: 33px;color: black; text-align: center;">Propiedades</h1>
 
 <a class="btn-round btn-success" id="btn-add" style="color: black; font-size: 20px;margin-top: 0%; " routerLink="registro"><button style="background-color:#F1F1FF;" mat-icon-button ><mat-icon>add</mat-icon></button>&nbsp; CREAR PROPIEDAD</a>
@@ -46,7 +47,7 @@
       </mat-card-content>
       <mat-card-actions>
         <button class="btn-success" routerLink="detalle/{{propiedad.pro_id}}" mat-button>VER MAS</button>
-        <button class="btn-danger" mat-button>ELIMINAR</button>
+        <button class="btn-danger" (click)="eliminar(propiedad.pro_id)" mat-button>ELIMINAR</button>
       </mat-card-actions>
     </mat-card>
   </li>
@@ -54,3 +55,4 @@
 </div>
 <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 
+</div>

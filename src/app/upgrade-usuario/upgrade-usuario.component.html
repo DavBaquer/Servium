@@ -1,0 +1,72 @@
+<div class="contenedor ">
+
+  <form  [formGroup]="loginForm"  (ngSubmit)="upgradeUsuario()" class="col-sm-8 border border-black mat-elevation-z8" style="float: left;background-color: #ffffff;">
+
+    <h2 class="title"><strong>DATOS DEL USUARIO</strong></h2>
+
+    <div>
+      <mat-label class="input-form"> Nombre:</mat-label>
+      <mat-form-field class="input-form">
+       <input    type="text"  matInput formControlName="nombre" required  [(ngModel)]="usuario.usu_nombre"/>
+
+      <mat-error *ngIf="isValidFiel('nombre')">
+        {{getErrorMessage('nombre')}}
+      </mat-error>
+    </mat-form-field>
+    </div>
+    <div>
+      <mat-label class="input-form">Correo:</mat-label>
+      <mat-form-field class="input-form">
+       <input    type="text"  matInput formControlName="email" required [(ngModel)]="usuario.usu_correo" />
+
+      <mat-error *ngIf="isValidFiel('email')">
+        {{getErrorMessage('email')}}
+      </mat-error>
+    </mat-form-field>
+    </div>
+
+    <div>
+      <mat-label class="input-form">Nueva contraseña:</mat-label>
+      <button id="show_password" class="btn btn-primary" type="button" (click)="mostrarContrasena()"> <span class="fa fa-eye-slash icon"></span> </button>
+      <mat-form-field class="input-form">
+       <input  id="password" type="password"  matInput formControlName="password" [(ngModel)]="usuario.usu_password"/>
+      <mat-error *ngIf="isValidFiel('password')">
+        {{getErrorMessage('password')}}
+      </mat-error>
+    </mat-form-field>
+
+    </div>
+
+    <div>
+      <mat-label class="input-form">URL Foto:</mat-label>
+      <mat-form-field class="input-form">
+       <input    type="text"  matInput formControlName="imagen"  [(ngModel)]="usuario.usu_imagen" />
+
+      <mat-error *ngIf="isValidFiel('imagen')">
+        {{getErrorMessage('imagen')}}
+      </mat-error>
+    </mat-form-field>
+    </div>
+
+    <div>
+      <mat-label class="input-form" >Ingresa tu constraseña actual para guardar los cambios:</mat-label>
+      <mat-form-field class="input-form">
+       <input  type="text"  matInput formControlName="upgrade" required  [(ngModel)]="usuario.usu_upgrade" />
+
+      <mat-error *ngIf="isValidFiel('upgrade')">
+        {{getErrorMessage('upgrade')}}
+      </mat-error>
+    </mat-form-field>
+    </div>
+
+    <input _ngcontent-c4 class="btn btn-success btn-round" type="submit" value="GUARDAR">
+    <input _ngcontent-c4 class="btn btn-danger btn-round" type="Reset" value="Borrar datos">
+
+    </form>
+
+    <div class="col-sm-4 border border-black mat-elevation-z8" style="float: right;background-color: #ffffff;"><img id='imagenusuario'  src="{{usuario.usu_imagen}}"></div>
+    <div style="clear: both;"></div>
+
+
+</div>
+<div style="clear: both;"></div>

@@ -1,0 +1,48 @@
+.contenedor{
+  background: url(../../assets/img/login-servium.png);
+  background-repeat:round ;
+  border: 2px solid black;
+  align-items: center;
+
+  vertical-align: middle;
+  text-align: center;
+
+  box-sizing: border-box;
+  padding: 5%;
+}
+
+.div-form{
+
+  width: 40%;
+  display: inline-block;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.8;
+}
+
+@media screen and ( min-height:700px ) {
+  .contenedor{
+    height: 80%;
+    padding-top:10%;
+  }
+  .div-form{
+    width: 50%;
+  ;
+  }
+
+
+}
+
+@media screen and (max-width:800px) {
+  .div-form{
+    width: 100%;
+
+  }
+  .contenedor{
+
+    padding: 0%;
+    padding-top: 5%;
+  }
+}
+

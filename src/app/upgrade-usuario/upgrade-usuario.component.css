@@ -1,0 +1,17 @@
+.contenedor{
+
+  margin-left: 15%;
+  margin-right: 15%;
+  height: 100%;
+
+}
+.input-form{
+  width: 100%;
+
+}
+
+
+#imagenusuario{
+  max-width: 300px;
+  width: 100%;
+}

@@ -16,6 +16,10 @@ all(){
 return this.http.get(`${this.url}/mostrartodo.php`);
 }
 
+getciudades(){
+  return this.http.get(`${this.url}/ciudades.php`);
+  }
+
 add(ubicacion:ubicacion){
 return this.http.post(`${this.url}/agregar.php`,JSON.stringify(ubicacion));
 }

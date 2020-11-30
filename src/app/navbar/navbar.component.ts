@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { LoginService } from '../login.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -8,15 +10,26 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  urlUsuario:string="";
   private toggleButton: any;
     private sidebarVisible: boolean;
-  constructor(public location: Location, private element : ElementRef) {
+    usuarioLogeado:boolean=false;
+    nombreUsuario:string='';
+  constructor(public location: Location, private element : ElementRef, private loginService:LoginService,
+    public modal:NgbModal) {
     this.sidebarVisible = false;
    }
 
   ngOnInit(): void {
+
+
     this.toggleButton=document.getElementById('togleButton');
+    this.loginService.changeLoginStatus$.subscribe((loggedStatus:boolean)=>
+    {
+      this.usuarioLogeado=loggedStatus;
+    })
+
+    this.loginService.isLoggedIn('');
   }
   sidebarOpen() {
 
@@ -51,6 +64,25 @@ sidebarToggle() {
     }
 };
 
+configusuario() {
+  // const toggleButton = this.toggleButton;
+  // const body = document.getElementsByTagName('body')[0];
+
+
+};
+
+
+
+rol():boolean{
+  this.nombreUsuario=sessionStorage.getItem('usu_nombre');
+  this.urlUsuario=sessionStorage.getItem('usu_imagen');
+  console.log(this.nombreUsuario);
+ if(sessionStorage.getItem('usu_rol')=='superadmin'){
+    return true;
+ }else{
+   return false;
+ }
+}
 
 
 

@@ -1,0 +1,98 @@
+
+<div class="fondo-imagen">
+<div class="titulo">
+<br>
+<br>
+<br>
+ <h1 class="animate__animated animate__bounce" ><strong>CONTACTE CON NOSOTROS</strong></h1>
+</div>
+</div>
+<div class="contenedor">
+
+<div class="div-form">
+
+  <div class="row">
+  <form  [formGroup]="contactoForm" (ngSubmit)="onSend()" id ="contacto" class="div-contacto col-sm-7  "  >
+    <div style="font-size: 150%; color: black;"><strong>Envianos tus inquietudes</strong></div>
+    <div>
+      <mat-label class="input-form"> Nombre:</mat-label>
+      <mat-form-field class="input-form">
+       <input    type="text"  matInput formControlName="nombre" required  />
+
+      <mat-error *ngIf="isValidFiel('nombre')">
+        {{getErrorMessage('nombre')}}
+      </mat-error>
+    </mat-form-field>
+    </div>
+    <div>
+      <mat-label class="input-form">Correo:</mat-label>
+      <mat-form-field class="input-form">
+       <input    type="text"  matInput formControlName="email" required  />
+
+      <mat-error *ngIf="isValidFiel('email')">
+        {{getErrorMessage('email')}}
+      </mat-error>
+    </mat-form-field>
+    </div>
+
+    <div>
+      <mat-label class="input-form"> Teléfono:</mat-label>
+      <mat-form-field class="input-form">
+       <input    type="text" placeholder="" matInput formControlName="telefono" required  />
+
+      <mat-error *ngIf="isValidFiel('telefono')">
+        {{getErrorMessage('telefono')}}
+      </mat-error>
+    </mat-form-field>
+    </div>
+
+    <div>
+      <mat-label class="input-form"> Mensaje:</mat-label>
+      <mat-form-field class="input-form">
+       <textarea   type="text" placeholder="" matInput formControlName="mensaje" required style="height:100px;" >
+      </textarea>
+      <mat-error *ngIf="isValidFiel('mensaje')">
+        {{getErrorMessage('mensaje')}}
+      </mat-error>
+
+    </mat-form-field>
+    </div>
+
+
+
+
+    <input style="background-color: #FFFF;" type="submit" value="Enviar formulario">
+    <input style="background-color: #FFFF;" type="Reset" value="Borrar datos">
+
+    </form>
+    <div class="col-sm-3  mb-2">
+      <ul class="lista-contacto"  >
+       <li><div class="row" style="color: black;"><span class="material-icons">
+        call
+        </span><p><strong>telefono:0981542097</strong></p></div> </li>
+        <li><a href="mailto:servium1@outlook.com"><div class="row" style="color: black;"><span class="material-icons">
+          email
+          </span><p><strong>servium1@outlook.com</strong></p></div></a></li>
+        <li><a target="_blank" href="https://www.facebook.com/erick.quimbita.9"><div class="row" style="color: black;"><span class="material-icons">
+          facebook
+          </span><h1 style="font-size:120%;"><strong>SERVIUM</strong></h1></div></a>
+        </li>
+        </ul>
+    </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+<section>
+
+  <div style="background-color: black; text-align: center;">
+    <div><h1 style="color:#FFFF;">UBICACIÓN EN EL MAPA</h1></div>
+    <iframe class="map" src="https://www.google.com/maps/d/u/0/embed?mid=1DwCbZP0yRCmv3VSYl6Ijrn-Da9smwdyv" ></iframe>
+  </div>
+
+</section>
+
+
